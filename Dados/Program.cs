@@ -22,16 +22,22 @@ namespace Dados
 
             do {
                 Console.WriteLine(mensaje);
-                numerosAleatorios = programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
-                
-                caraSuperior = numerosAleatorios[0];
-                caraInferior = numerosAleatorios[1];
-                caraFrontal = numerosAleatorios[2];
-                caraTrasera =  numerosAleatorios[3];
-                caraIzquierda =  numerosAleatorios[4];
-                caraDerecha = numerosAleatorios[5];
-                
-                programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                for (int i = 0; i < 2; i++)
+                {
+                    numerosAleatorios = programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+
+                    caraSuperior = numerosAleatorios[0];
+                    caraInferior = numerosAleatorios[1];
+                    caraFrontal = numerosAleatorios[2];
+                    caraTrasera = numerosAleatorios[3];
+                    caraIzquierda = numerosAleatorios[4];
+                    caraDerecha = numerosAleatorios[5];
+
+                    programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                    Console.WriteLine();
+                }
+                Console.WriteLine("Las caras superiores de ambos dados son diferentes");
+
                 Console.ReadKey();
                 consola = Console.Read();
                 Console.Read();
@@ -55,7 +61,12 @@ namespace Dados
         {
             int[] numerosAleatorios = {0,0,0,0,0,0};
             Random random = new Random();
-            caraSupe =  random.Next(1, 7);
+            int numeroParaCaraSuperiorDado2 = random.Next(1, 7);
+            while (caraSupe == numeroParaCaraSuperiorDado2)
+            {
+                numeroParaCaraSuperiorDado2 = random.Next(1, 7);
+            }
+            caraSupe = numeroParaCaraSuperiorDado2;
             caraInfe = 7 - caraSupe;
             int ran = random.Next(1, 7);
 
