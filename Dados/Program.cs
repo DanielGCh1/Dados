@@ -18,10 +18,19 @@ namespace Dados
             int caraTrasera = 0;
             int caraIzquierda = 0;
             int caraDerecha = 0;
+            int[] numerosAleatorios = { 0, 0, 0, 0, 0, 0 };
 
             do {
                 Console.WriteLine(mensaje);
-                programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                numerosAleatorios = programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                
+                caraSuperior = numerosAleatorios[0];
+                caraInferior = numerosAleatorios[1];
+                caraFrontal = numerosAleatorios[2];
+                caraTrasera =  numerosAleatorios[3];
+                caraIzquierda =  numerosAleatorios[4];
+                caraDerecha = numerosAleatorios[5];
+                
                 programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
                 Console.ReadKey();
                 consola = Console.Read();
@@ -41,9 +50,10 @@ namespace Dados
             Console.WriteLine("        #####");
         }
 
-        public void obtenerNumerosRamdom(int caraSupe, int caraInfe, int caraFron, int caraTrase, int caraIzquier,
+        public int[] obtenerNumerosRamdom(int caraSupe, int caraInfe, int caraFron, int caraTrase, int caraIzquier,
         int caraDere)
         {
+            int[] numerosAleatorios = {0,0,0,0,0,0};
             Random random = new Random();
             caraSupe =  random.Next(1, 7);
             caraInfe = 7 - caraSupe;
@@ -62,12 +72,14 @@ namespace Dados
             }
             caraDere = 7 - caraIzquier;
 
-            Console.WriteLine(caraSupe);
-            Console.WriteLine(caraInfe);
-            Console.WriteLine(caraFron);
-            Console.WriteLine(caraTrase);
-            Console.WriteLine(caraIzquier);
-            Console.WriteLine(caraDere);
+            numerosAleatorios[0] = caraSupe;
+            numerosAleatorios[1] = caraInfe;
+            numerosAleatorios[2] = caraFron;
+            numerosAleatorios[3] = caraTrase;
+            numerosAleatorios[4] = caraIzquier;
+            numerosAleatorios[5] = caraDere;
+
+            return numerosAleatorios;
         }
     }
 }
