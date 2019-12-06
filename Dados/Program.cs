@@ -12,7 +12,7 @@ namespace Dados
             int enter = 13;
             int consola = 0;
             Program programa = new Program();
-            int caraSuperio = 0;
+            int caraSuperior = 0;
             int caraInferior = 0;
             int caraFrontal = 0;
             int caraTrasera = 0;
@@ -21,14 +21,15 @@ namespace Dados
 
             do {
                 Console.WriteLine(mensaje);
-                programa.dibujarDado(caraSuperio, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
                 Console.ReadKey();
                 consola = Console.Read();
                 Console.Read();
             } while (consola == enter);
         }
 
-        public void dibujarDado(int caraSupe, int caraInferior, int caraFron, int caraTrase, int caraIzquier,
+        public void dibujarDado(int caraSupe, int caraInfe, int caraFron, int caraTrase, int caraIzquier,
         int caraDere)
         {
             Console.WriteLine("        #####");
@@ -36,8 +37,37 @@ namespace Dados
             Console.WriteLine("#################");
             Console.WriteLine("# {0} # {1} # {2} # {3} #", caraTrase, caraIzquier, caraFron, caraDere);
             Console.WriteLine("#################");
-            Console.WriteLine("        # {0} #", caraInferior);
+            Console.WriteLine("        # {0} #", caraInfe);
             Console.WriteLine("        #####");
+        }
+
+        public void obtenerNumerosRamdom(int caraSupe, int caraInfe, int caraFron, int caraTrase, int caraIzquier,
+        int caraDere)
+        {
+            Random random = new Random();
+            caraSupe =  random.Next(1, 7);
+            caraInfe = 7 - caraSupe;
+            int ran = random.Next(1, 7);
+
+            do {
+                ran = random.Next(1, 7);
+            } while (ran == caraSupe || ran == caraInfe);
+            caraFron = ran;
+            caraTrase = 7 - caraFron;
+
+            caraIzquier = 1;
+            while (caraIzquier==caraSupe || caraIzquier==caraInfe || caraIzquier==caraFron || caraIzquier==caraTrase)
+            {
+                caraIzquier++;
+            }
+            caraDere = 7 - caraIzquier;
+
+            Console.WriteLine(caraSupe);
+            Console.WriteLine(caraInfe);
+            Console.WriteLine(caraFron);
+            Console.WriteLine(caraTrase);
+            Console.WriteLine(caraIzquier);
+            Console.WriteLine(caraDere);
         }
     }
 }
