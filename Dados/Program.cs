@@ -22,16 +22,22 @@ namespace Dados
 
             do {
                 Console.WriteLine(mensaje);
-                numerosAleatorios = programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
-                
-                caraSuperior = numerosAleatorios[0];
-                caraInferior = numerosAleatorios[1];
-                caraFrontal = numerosAleatorios[2];
-                caraTrasera =  numerosAleatorios[3];
-                caraIzquierda =  numerosAleatorios[4];
-                caraDerecha = numerosAleatorios[5];
-                
-                programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                int sumaDeCarasSuperiores = 0;
+                for (int i = 0; i < 2; i++)
+                {
+                    numerosAleatorios = programa.obtenerNumerosRamdom(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                    caraSuperior = numerosAleatorios[0];
+                    caraInferior = numerosAleatorios[1];
+                    caraFrontal = numerosAleatorios[2];
+                    caraTrasera = numerosAleatorios[3];
+                    caraIzquierda = numerosAleatorios[4];
+                    caraDerecha = numerosAleatorios[5];
+                    sumaDeCarasSuperiores = sumaDeCarasSuperiores + caraSuperior;
+                    programa.dibujarDado(caraSuperior, caraInferior, caraFrontal, caraTrasera, caraIzquierda, caraDerecha);
+                    Console.WriteLine(" ");
+                }
+                Console.WriteLine("La suma de las caras superiores es: {0}", sumaDeCarasSuperiores);
+
                 Console.ReadKey();
                 consola = Console.Read();
                 Console.Read();
